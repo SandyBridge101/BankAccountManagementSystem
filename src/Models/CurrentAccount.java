@@ -21,7 +21,7 @@ public class CurrentAccount extends BankAccount implements Deposit, Withdraw {
 
     @Override
     public void withdraw(double amount) {
-        if (balance - amount > OVERDRAFT_LIMIT) {
+        if (balance+OVERDRAFT_LIMIT >= amount ) {
             balance -= amount;
             transactionHistory.add("Withdrew: $" + amount+" on "+ LocalDate.now());
         }else {

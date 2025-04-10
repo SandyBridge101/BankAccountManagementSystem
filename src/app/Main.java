@@ -37,7 +37,6 @@ public class Main  {
         savingsAccount.getTransactionHistory().removeAt(0);
         savingsAccount.getTransactionHistory().display();
 
-        fixedDepositAccount.deposit(10);
         fixedDepositAccount.withdraw(150);
         currentAccount.deposit(10);
         currentAccount.withdraw(150);

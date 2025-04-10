@@ -8,7 +8,6 @@ import java.time.LocalDate;
 public class SavingsAccount extends BankAccount implements Deposit, Withdraw {
     public static final double MIN_BALANCE = 100;
 
-
     public SavingsAccount(String accountNumber, String ownerName, double balance, String pinCode) {
 
         super(accountNumber, ownerName, balance,pinCode);
@@ -24,7 +23,7 @@ public class SavingsAccount extends BankAccount implements Deposit, Withdraw {
 
     @Override
     public void withdraw(double amount) {
-        if (balance - amount > MIN_BALANCE) {
+        if (balance - amount >= MIN_BALANCE) {
             balance -= amount;
             transactionHistory.add("Withdrew: $" + amount+" on "+LocalDate.now());
         }else {

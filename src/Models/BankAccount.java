@@ -10,7 +10,7 @@ public abstract class BankAccount {
     protected double balance;
     protected String accountNumber;
     protected String ownerName;
-    protected String pinCode;
+    protected String pinCode;//for security
     protected TransactionLinkedList transactionHistory;
 
 

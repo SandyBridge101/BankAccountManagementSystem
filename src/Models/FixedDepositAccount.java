@@ -5,14 +5,13 @@ import Interfaces.Withdraw;
 
 import java.time.LocalDate;
 
-public class FixedDepositAccount extends BankAccount implements Deposit, Withdraw {
-    private static final double INTEREST = 100;
+public class FixedDepositAccount extends BankAccount implements  Withdraw {
+    private static final double INTEREST = 0.15;
     private LocalDate maturityDate;
 
     public FixedDepositAccount(String accountNumber, String ownerName, double balance,String pinCode, LocalDate maturityDate) {
         super(accountNumber, ownerName, balance,pinCode);
         this.maturityDate = maturityDate;
-
         transactionHistory.add("Created new Fixed Deposit Account "+accountNumber+ " maturing on "+maturityDate+" with "+balance+" created on "+ LocalDate.now());
     }
 
@@ -20,6 +19,7 @@ public class FixedDepositAccount extends BankAccount implements Deposit, Withdra
     @Override
     public void withdraw(double amount) {
         if (LocalDate.now().isAfter(maturityDate) || LocalDate.now().isEqual(maturityDate)) {
+            balance +=balance*INTEREST;
             if (amount <= balance) {
                 balance -= amount;
                 transactionHistory.add("Withdrew after maturity: $" + amount+" on "+LocalDate.now());
@@ -34,9 +34,5 @@ public class FixedDepositAccount extends BankAccount implements Deposit, Withdra
         }
     }
 
-    @Override
-    public void deposit(double amount) {
-        System.out.println("Cannot deposit into a Fixed Deposit Account after creation.");
-        transactionHistory.add("Deposit Failed: Cannot deposit into a Fixed Deposit Account after creation.");
-    }
+
 }

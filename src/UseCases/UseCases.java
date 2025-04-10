@@ -36,7 +36,7 @@ public class UseCases extends AccountList {
 
     }
 
-    //overlaoded function for fixed deposit
+    //overloaded function for fixed deposit
     public String createAccount(String ownerName,double amount,String pinCode,String accountType,LocalDate maturityDate){
 
         System.out.println("Maturity date: " + maturityDate);
@@ -59,19 +59,6 @@ public class UseCases extends AccountList {
                     }
 
 
-                }
-            }
-            return "Invalid account.";
-        }
-        else if (accountType.equals("Fixed")) {
-            for (FixedDepositAccount account : AccountList.fixedDepositAccounts) {
-                if (account.getAccountNumber().equals(accountNumber)) {
-                    if(account.verifyPinCode(pinCode)){
-                        account.deposit(amount);
-                        return account.getTransactionHistory().getRecent();
-                    }else {
-                        return "Invalid PIN Code";
-                    }
                 }
             }
             return "Invalid account.";

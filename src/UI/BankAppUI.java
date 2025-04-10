@@ -130,6 +130,7 @@ public class BankAppUI extends Application {
         Label pinLabel = new Label("Enter Pin:");
         TextField pinInput = new TextField();
 
+
         Button depositButton = new Button("Deposit");
         Button withdrawButton = new Button("Withdraw");
         Label feedback = new Label();
@@ -160,7 +161,14 @@ public class BankAppUI extends Application {
 
         });
 
-        layout.getChildren().addAll(nameLabel, accountInput, amountLabel, amountInput,pinLabel,pinInput,depositButton, withdrawButton, feedback);
+        if (type.equals("Fixed")) {
+            layout.getChildren().addAll(nameLabel, accountInput, amountLabel, amountInput,pinLabel,pinInput,withdrawButton, feedback);
+
+        }else{
+            layout.getChildren().addAll(nameLabel, accountInput, amountLabel, amountInput,pinLabel,pinInput,depositButton, withdrawButton, feedback);
+
+        }
+
         return layout;
     }
 

@@ -1,7 +1,7 @@
 package DataStructures;
 
 public class TransactionNode {
-    public String data;
+    public String data;//details of each transaction
     public TransactionNode next;
 
     public TransactionNode(String data) {
